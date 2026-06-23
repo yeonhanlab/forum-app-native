@@ -3,10 +3,14 @@ import { Config } from "tailwindcss";
 export default {
     darkMode: "class",
     content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
-    presets: [require("nativewind/present")],
+    presets: [require("nativewind/preset")],
     plugins: [],
     theme: {
         extend: {
+            maxWidth: {
+                "250": "1000px",
+            },
+
             colors: {
                 background: "var(--bg-default)",
                 paper: "var(--bg-paper)",
@@ -34,4 +38,10 @@ export default {
             },
         },
     },
+    safelist: [
+        {
+            pattern:
+                /(bg|text|border)-(primary|secondary|error|success|warning|info)-(main|contrast)/,
+        },
+    ],
 } satisfies Config;
